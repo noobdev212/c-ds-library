@@ -26,7 +26,10 @@ typedef struct DSCollection;
   }
   
 typedef struct {
-  void (*access)(DSCollection*, u32);
+  void (*replace)(DSCollection*, void*, u32);
+  void *(*access)(DSCollection*, u32);
+  void (*rshift)(DSCollection*, u32, u32);
+  void (*lshift)(DSCollection*, u32, u32);
 } DSConfig;
 
 /**
