@@ -63,7 +63,8 @@ cmake_dependent_option(CDS_TESTS "Build the test directory" "${CDS_MAINPROJ}" CD
 add_library(cds-static STATIC)
 target_sources(cds-static 
   PUBLIC
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/struct.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/arraylist.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/operator.c"
 )
 target_include_directories(cds-static PUBLIC 
   ${PROJECT_SOURCE_DIR}/include
