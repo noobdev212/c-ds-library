@@ -1,23 +1,10 @@
 #include "cds/arraylist.h"
-#include <stdio.h>
-#include <assert.h>
-#include <locale.h>
+#include "global.h"
 
-#define AND &&
-#define OR ||
+#define CDS_UNIT_TEST
 
 int main() {
-#ifdef NDEBUG
-  // notify assert is toggled off
-  printf("ArrayList: NDEBUG is currently undefined\n");
-  #undef NDEBUG
-#endif
-
-  setlocale(LC_ALL, "");
-  wchar_t message[] = L"ArrayList: Successful Test Case \u263A";
-  int test_value_1 = 1;
-  int test_value_2 = 3;
-  void *ret, *ret_1; // to be used for return values
+  CDS_UTEST_SETUP
 
   /////// Testing Content ///////
   
