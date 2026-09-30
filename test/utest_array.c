@@ -17,7 +17,7 @@ int main() {
   wchar_t message[] = L"ArrayList: Successful Test Case \u263A";
   int test_value_1 = 1;
   int test_value_2 = 3;
-  void *ret; // to be used for return values
+  void *ret, *ret_1; // to be used for return values
 
   /////// Testing Content ///////
   
@@ -33,6 +33,15 @@ int main() {
   ret = get_array(array, 0);
   printf("2nd return case: %d\n", *(int*)ret);
   assert(array->size == 0 AND *(int*)ret == 0);
+
+  push_back_array(array, &test_value_1);
+  ret = get_array(array, 0);
+  insert_array(array, &test_value_2, 0);
+  ret = get_array(array, 0);
+  printf("3rd return case: %d\n", *(int*)ret);
+  ret_1 = get_array(array, 1);
+  printf("4th return case: %d\n", *(int*)ret_1);
+  assert(*(int*)ret == 3 AND *(int*)ret_1 == 1);
 
   free_array(array);
   assert(array == NULL);
