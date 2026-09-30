@@ -43,6 +43,7 @@ void pop_back_array(ArrayList *array) {
 void insert_array(ArrayList *array, void *value, u32 index) {
   if (array->size > index) {
     array->config.rshift(array, index, array->size);
+    array->size++;
   }
   set_array(array, value, index);
 }
@@ -51,7 +52,6 @@ void delete_array(ArrayList *array, u32 index) {
   if (array->size > index) {
     array->config.lshift(array, index, array->size);
   }
-  void *repl = NULL;
-  set_array(array, &repl, array->size); 
+  set_array(array, NULL, array->size); 
   array->size--;
 }
