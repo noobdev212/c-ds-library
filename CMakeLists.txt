@@ -79,6 +79,18 @@ endfunction()
 
 add_compiler_flag(cds-static "-Wall")
 add_compiler_flag(cds-static "-Wextra")
+add_compiler_flag(cds-static "-Wno-unused-parameter")
+add_compiler_flag(cds-static "-Wdouble-promotion")
+add_compiler_flag(cds-static "-Wconversion")
+add_compiler_flag(cds-static "-fsanitize=address")
+
+check_c_compiler_flag("-g3" IS_AVAILABE_OPTION)
+if (IS_AVAILABE_OPTION)
+  target_compile_options(cds-static PRIVATE "-g3")
+else()
+  target_compile_options(cds-static PRIVATE "-g")
+endif()
+
 
 if(CDS_TESTS)
   message(VERBOSE "test is set to on")
