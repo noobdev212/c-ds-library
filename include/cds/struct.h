@@ -67,16 +67,9 @@ typedef enum {
 } NodeType;
 
 typedef struct {
-  void *value
-  union {
-    struct {
-      void *prev;
-      void *next;
-    };
-    struct {
-      void *next; // cast down from DSNode
-    };
-  };
+  void *value;
+  void *prev;
+  void *next; // cast down from DSNode
   u32 count; // how many next option is provided
   DSConfig config;
   NodeType type;
