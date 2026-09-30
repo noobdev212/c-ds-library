@@ -34,3 +34,27 @@ void shift_left(void *collection, u32 start_index, u32 end_index) {
     memcpy(dest, src, container->nbyte);
   }
 }
+
+void *sequence_access_get(void *node, u32 index) {
+  DSNode *curr = (DSNode*)node;
+
+  while(curr != NULL && index > 0) {
+    curr = (DSNode*)curr->next;
+    index--;
+  }
+
+  return curr ? curr->value : NULL;
+}
+
+void sequence_access_set(void *node, void *value, u32 index) {
+  DSNode *curr = (DSNode*)node;
+
+  while(curr != NULL && index > 0) {
+    curr = (DSNode*)curr->next;
+    index--;
+  }
+
+  if (curr != NULL) {
+    curr->value = value;
+  }
+}
