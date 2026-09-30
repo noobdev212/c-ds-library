@@ -1,4 +1,5 @@
-#include "cds/list.h"
+#include "cds/linkedlist.h"
+#include "cds/operator.h"
 
 LinkedList *init_list(void *value, u32 count, NodeType type) {
   LinkedList *list = (LinkedList*)malloc(sizeof(LinkedList));
@@ -7,13 +8,13 @@ LinkedList *init_list(void *value, u32 count, NodeType type) {
   DSConfig config;  
   switch(type) {
     case NODE_SINGLE:
-      config = {
+      config = (DSConfig){
         .access = &sequence_access_get,
         .replace = &sequence_access_set
       };
       break;
     case NODE_DOUBLE:
-      config = {
+      config = (DSConfig){
         .access = &sequence_access_get,
         .replace = &sequence_access_set
       };
