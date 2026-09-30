@@ -4,6 +4,7 @@
 #include <stddef.h>
 #include <stdint.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <errno.h>
 #include <string.h>
 
@@ -12,7 +13,6 @@ typedef uint16_t u16;
 typedef uint32_t u32;
 typedef uint64_t u64;
 
-typedef struct DSCollection;
 
 #define CDS_ERROR(condition, desc) \
   if (condition) { \
@@ -26,10 +26,12 @@ typedef struct DSCollection;
   }
   
 typedef struct {
-  void (*replace)(DSCollection*, void*, u32);
-  void *(*access)(DSCollection*, u32);
-  void (*rshift)(DSCollection*, u32, u32);
-  void (*lshift)(DSCollection*, u32, u32);
+  // the first paramter is a placeholder for
+  // DSCollection or any alternatives to that
+  void (*replace)(void*, void*, u32);
+  void *(*access)(void*, u32);
+  void (*rshift)(void*, u32, u32);
+  void (*lshift)(void*, u32, u32);
 } DSConfig;
 
 /**
@@ -44,8 +46,14 @@ typedef struct {
   void *elements;
   u32    size;
   u32    capacity;
-  u8     nbytes;
+  u8     nbyte;
   DSConfig config;
 } DSCollection;
+
+// free structure for collection
+#define free_cstruct(collection) \
+  free(collection->elements); \
+  free(collection); \
+  collection = NULL;
 
 #endif

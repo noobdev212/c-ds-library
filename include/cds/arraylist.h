@@ -21,7 +21,7 @@ typedef DSCollection ArrayList;
 // serve as possible interface for config
 // (i.e. sorting, searching, ...)
 ArrayList *init_array(u32 capacity, u8 nbyte);
-void free_array(ArrayList *array);
+#define free_array(array) free_cstruct(array)
 
 void *get_array(ArrayList *array, u32 index);
 void set_array(ArrayList *array, void *value, u32 index);
