@@ -18,9 +18,10 @@ void random_access_set(void *collection, void *value, u32 index) {
 
 void shift_right(void *collection, u32 start_index, u32 end_index) {
   DSCollection *container = (DSCollection*)collection;
-  for (u32 i = end_index; i >= start_index; i--) {
-    void *src = container->config.access(collection, i);
-    void *dest = container->config.access(collection, i+1);
+  // made dumb mistake with using u32 :D
+  for (int i = (int)end_index; i >= (int)start_index; i--) {
+    void *src = container->config.access(collection, (u32)i);
+    void *dest = container->config.access(collection, (u32)i+1);
     memcpy(dest, src, container->nbyte);
   }
 }
