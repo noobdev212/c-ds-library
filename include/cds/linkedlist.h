@@ -25,10 +25,10 @@ LinkedList *init_list(void *value, u32 count, NodeType type);
 
 void *get_list(LinkedList *list, u32 index);
 void set_list(LinkedList *list, void *value, u32 index);
-
-// adds a new node
 void resize_list(LinkedList *list, u32 size);
 void delete_list(LinkedList *list, u32 index, u32 size); 
+void push_back_list(LinkedList *list, void *value); // doesn't add new nodes
+void pop_back_list(LinkedList *list); // only sets value of last node to null
 
 #define free_list(list) \
   { \

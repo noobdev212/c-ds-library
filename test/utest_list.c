@@ -26,6 +26,17 @@ int main() {
   printf("3rd return case: %u\n", count);
   assert(count == 1);
 
+  push_back_list(list, &test_value_2);
+  ret = get_list(list, count-1);
+  printf("4th return case: %d\n", *(int*)ret);
+  assert(*(int*)ret == 3 AND count == 1);
+
+  pop_back_list(list);
+  count = list->config.count(list);
+  ret = get_list(list, 0);
+  printf("5th return case: %u\n", count);
+  assert(ret == NULL AND count == 1);
+
   free_list(list);
   assert(list == NULL);
   /////// End of Testing ///////

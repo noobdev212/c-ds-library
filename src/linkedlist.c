@@ -77,4 +77,12 @@ void delete_list(LinkedList *list, u32 index, u32 size) {
   }
 }
 
+void push_back_list(LinkedList *list, void *value) {
+  LinkedList *tail = (LinkedList*)list->config.back(list); 
+  tail->value = value;
+}
 
+void pop_back_list(LinkedList *list) {
+  LinkedList *tail = (LinkedList*)list->config.back(list); 
+  tail->value = NULL;
+}
