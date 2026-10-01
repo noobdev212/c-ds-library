@@ -12,5 +12,6 @@ void *sequence_access_get(void *node, u32 index);
 void sequence_access_set(void *node, void *value, u32 index);
 void *sequence_tail_get(void *node);
 u32  sequence_count(void *node);
+void *sequence_traverse(void *node, u32 index);
 
 #endif

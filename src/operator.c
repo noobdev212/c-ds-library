@@ -82,3 +82,12 @@ u32 sequence_count(void *node) {
 
   return count;
 }
+
+void *sequence_traverse(void *node, u32 index) {
+  DSNode *curr = (DSNode*)node;
+
+  while(curr != NULL && index-- > 0) {
+    curr = (DSNode*)curr->next;
+  }
+  return curr;
+}
