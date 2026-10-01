@@ -26,4 +26,8 @@ LinkedList *init_list(void *value, u32 count, NodeType type);
 void *get_list(LinkedList *list, u32 index);
 void set_list(LinkedList *list, void *value, u32 index);
 
+// adds a new node
+void resize_list(LinkedList *list, u32 size);
+
+
 #endif

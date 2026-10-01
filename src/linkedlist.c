@@ -10,16 +10,18 @@ LinkedList *init_list(void *value, u32 count, NodeType type) {
     case NODE_SINGLE:
       config = (DSConfig){
         .access = &sequence_access_get,
-        .replace = &sequence_access_set
+        .replace = &sequence_access_set,
+        .back = &sequence_tail_get,
+        .count = &sequence_count
       };
       break;
     case NODE_DOUBLE:
       config = (DSConfig){
         .access = &sequence_access_get,
-        .replace = &sequence_access_set
+        .replace = &sequence_access_set,
+        .back = &sequence_tail_get,
+        .count = &sequence_count
       };
-      break;
-    case NODE_GRAPH:
       break;
     default:
       fprintf(stderr, "CDS Error: node type is not valid\n");
@@ -41,3 +43,13 @@ void *get_list(LinkedList *list, u32 index) {
 void set_list(LinkedList *list, void *value, u32 index) {
   list->config.replace(list, value, index);
 }
+
+void resize_list(LinkedList *list, u32 size) {
+  LinkedList *tail = (LinkedList*)list->config.back(list); 
+
+  for (u32 i = 0; i < size; i++) {
+    tail->next = init_list(NULL, list->count, list->type); 
+    tail = tail->next;
+  }
+}
+

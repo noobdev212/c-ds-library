@@ -15,6 +15,12 @@ int main() {
   ret = get_list(list, 0);
   printf("1st return case: %d\n", *(int*)ret);
   assert(*(int*)ret == 1);
+
+  resize_list(list, 2);
+  unsigned int count = list->config.count(list);
+  printf("2nd return case: %u\n", count);
+  assert(count == 3);
+
   /////// End of Testing ///////
   
   printf("%ls\n", message);
