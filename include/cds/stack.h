@@ -18,5 +18,6 @@ Stack *init_stack(void *value);
   stack = NULL;
 
 void  push_stack(Stack *stack, void *value); // creates new node
+void  *pop_stack(Stack *stack);
 
 #endif

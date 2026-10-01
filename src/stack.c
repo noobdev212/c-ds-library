@@ -20,3 +20,12 @@ void push_stack(Stack *stack, void *value) {
   node->next = curr;
   stack->top = node;
 }
+
+void *pop_stack(Stack *stack) {
+  void *value = stack->top->config.access(stack->top, 0); 
+  void *next = stack->top->next;
+  free(stack->top);
+  stack->top = next;
+
+  return value;
+}
