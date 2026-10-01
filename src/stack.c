@@ -14,4 +14,9 @@ Stack *init_stack(void *value) {
   return stack;
 }
 
-
+void push_stack(Stack *stack, void *value) {
+  LinkedList *node = init_slist(value);
+  LinkedList *curr = stack->top;
+  node->next = curr;
+  stack->top = node;
+}

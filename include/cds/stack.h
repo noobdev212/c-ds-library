@@ -13,4 +13,6 @@ typedef struct {
 
 Stack *init_stack(void *value);
 
+void  push_stack(Stack *stack, void *value); // creates new node
+
 #endif
