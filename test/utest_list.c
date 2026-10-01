@@ -17,9 +17,14 @@ int main() {
   assert(*(int*)ret == 1);
 
   resize_list(list, 2);
-  unsigned int count = list->config.count(list);
+  count = list->config.count(list);
   printf("2nd return case: %u\n", count);
   assert(count == 3);
+
+  delete_list(list, 1, 2);
+  count = list->config.count(list);
+  printf("3rd return case: %u\n", count);
+  assert(count == 1);
 
   /////// End of Testing ///////
   
