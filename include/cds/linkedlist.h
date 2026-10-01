@@ -30,4 +30,11 @@ void set_list(LinkedList *list, void *value, u32 index);
 void resize_list(LinkedList *list, u32 size);
 void delete_list(LinkedList *list, u32 index, u32 size); 
 
+#define free_list(list) \
+  { \
+    u32 count = list->config.count(list); \
+    delete_list(list, 0, count); \
+    list = NULL;\
+  }
+
 #endif
