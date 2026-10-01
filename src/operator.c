@@ -60,7 +60,7 @@ void sequence_access_set(void *node, void *value, u32 index) {
 }
 
 void *sequence_tail_get(void *node) {
-  DSNode *prev;
+  DSNode *prev = NULL;
   DSNode *curr = (DSNode*)node;
 
   while (curr != NULL) {
