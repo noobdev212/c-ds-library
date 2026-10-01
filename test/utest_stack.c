@@ -14,6 +14,9 @@ int main() {
   Stack *stack = init_stack(&test_value_1);
   assert(nstack->size == 1);
 
+  int dummy = peek_stack(stack, int);
+  assert(dummy == 1);
+
   push_stack(stack, &test_value_2);
   printf("1st return case: %d\n", *(int*)stack->top->value);
   assert(*(int*)stack->top->value == 3 AND stack->size == 2);
