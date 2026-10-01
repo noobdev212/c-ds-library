@@ -20,4 +20,6 @@ Stack *init_stack(void *value);
 void  push_stack(Stack *stack, void *value); // creates new node
 void  *pop_stack(Stack *stack);
 
+#define peek_stack(stack, type) *(type*)stack->top->value
+
 #endif
