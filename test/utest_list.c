@@ -37,6 +37,23 @@ int main() {
   printf("5th return case: %u\n", count);
   assert(ret == NULL AND count == 1);
 
+  LinkedList *node_dummy = init_list(&test_value_2, 1, NODE_SINGLE);
+  list = insert_list(node_dummy, list, 0);
+  count = list->config.count(list);
+  ret = get_list(list, 0);
+  printf("6th return case: %u\n", count);
+  assert(*(int*)ret == 3 AND count == 2);
+
+  LinkedList *node_dummy_2 = init_list(&test_value_1, 1, NODE_SINGLE);
+  list = insert_list(node_dummy_2, list, 1);
+  count = list->config.count(list);
+  ret = get_list(list, 2);
+  ret_1 = get_list(list, 0);
+  printf("7th return case: %u\n", count);
+  assert(*(int*)ret == 1 AND *(int*)ret_1 == 3 AND count == 3);
+
+  
+
   free_list(list);
   assert(list == NULL);
   /////// End of Testing ///////
