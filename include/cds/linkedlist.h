@@ -28,6 +28,6 @@ void set_list(LinkedList *list, void *value, u32 index);
 
 // adds a new node
 void resize_list(LinkedList *list, u32 size);
-
+void delete_list(LinkedList *list, u32 index, u32 size); 
 
 #endif

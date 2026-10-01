@@ -12,7 +12,8 @@ LinkedList *init_list(void *value, u32 count, NodeType type) {
         .access = &sequence_access_get,
         .replace = &sequence_access_set,
         .back = &sequence_tail_get,
-        .count = &sequence_count
+        .count = &sequence_count,
+        .traverse = &sequence_traverse
       };
       break;
     case NODE_DOUBLE:
@@ -20,7 +21,8 @@ LinkedList *init_list(void *value, u32 count, NodeType type) {
         .access = &sequence_access_get,
         .replace = &sequence_access_set,
         .back = &sequence_tail_get,
-        .count = &sequence_count
+        .count = &sequence_count,
+        .traverse = &sequence_traverse
       };
       break;
     default:
@@ -52,4 +54,27 @@ void resize_list(LinkedList *list, u32 size) {
     tail = tail->next;
   }
 }
+
+void delete_list(LinkedList *list, u32 index, u32 size) {
+  LinkedList *curr; 
+  LinkedList *prev;
+
+  if (index > 0) {
+    curr = list->config.traverse(list, index-1);
+    prev = curr;
+    curr = (LinkedList*)curr->next;
+    prev->next = NULL;
+  }
+  else {
+    curr = list;
+  }
+
+  for (u32 i = 0; curr != NULL && i < size; i++) {
+    prev = curr;
+    curr = (LinkedList*)curr->next;
+    free(prev);
+    prev = NULL;
+  }
+}
+
 
