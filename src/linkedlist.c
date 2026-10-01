@@ -15,6 +15,7 @@ LinkedList *init_list(void *value, u32 count, NodeType type) {
         .count = &sequence_count,
         .traverse = &sequence_traverse
       };
+      list->next = NULL;
       break;
     case NODE_DOUBLE:
       config = (DSConfig){
@@ -24,6 +25,8 @@ LinkedList *init_list(void *value, u32 count, NodeType type) {
         .count = &sequence_count,
         .traverse = &sequence_traverse
       };
+      list->next = NULL;
+      list->prev = NULL;
       break;
     default:
       fprintf(stderr, "CDS Error: node type is not valid\n");
@@ -85,4 +88,19 @@ void push_back_list(LinkedList *list, void *value) {
 void pop_back_list(LinkedList *list) {
   LinkedList *tail = (LinkedList*)list->config.back(list); 
   tail->value = NULL;
+}
+
+LinkedList *insert_list(LinkedList *src, LinkedList *dest, u32 index) {
+  LinkedList *dest_start = dest->config.traverse(dest, index);
+  LinkedList *src_end = (LinkedList*)src->config.back(src);
+  if (index == 0) {
+    src->next = dest_start;
+    return src;
+  }
+
+  void *dest_end = dest_start->next;
+  
+  dest_start->next = src;
+  src_end->next = dest_end;
+  return dest;
 }
