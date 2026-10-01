@@ -58,3 +58,27 @@ void sequence_access_set(void *node, void *value, u32 index) {
     curr->value = value;
   }
 }
+
+void *sequence_tail_get(void *node) {
+  DSNode *prev;
+  DSNode *curr = (DSNode*)node;
+
+  while (curr != NULL) {
+    prev = curr;
+    curr = (DSNode*)curr->next;
+  }
+
+  return prev;
+}
+
+u32 sequence_count(void *node) {
+  DSNode *curr = (DSNode*)node;
+
+  u32 count = 0;
+  while (curr != NULL) {
+    curr = (DSNode*)curr->next;
+    count++;
+  }
+
+  return count;
+}

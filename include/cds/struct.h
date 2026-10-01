@@ -32,6 +32,8 @@ typedef struct {
   void *(*access)(void*, u32);
   void (*rshift)(void*, u32, u32);
   void (*lshift)(void*, u32, u32);
+  void *(*back)(void*); // last element
+  u32 (*count)(void*); // count elements
 } DSConfig;
 
 /**
