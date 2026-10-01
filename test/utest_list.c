@@ -26,6 +26,8 @@ int main() {
   printf("3rd return case: %u\n", count);
   assert(count == 1);
 
+  free_list(list);
+  assert(list == NULL);
   /////// End of Testing ///////
   
   printf("%ls\n", message);
