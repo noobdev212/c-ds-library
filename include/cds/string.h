@@ -19,4 +19,6 @@ void    resize_string(String *string, u32 size);
   resize_string(dest, dest->size + src->size - 1); \
   strcat(dest->chs, src->chs);
 
+#define cmp_string(lstr, rstr) strcmp(lstr->chs, rstr->chs)
+
 #endif
