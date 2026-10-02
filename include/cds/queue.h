@@ -20,5 +20,6 @@ Queue *init_queue(void *value);
   queue = NULL;
 
 void push_back_queue(Queue *queue, void *value);
+void *pop_front_queue(Queue *queue);
 
 #endif
