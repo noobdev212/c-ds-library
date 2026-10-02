@@ -8,12 +8,15 @@ typedef struct {
   u32  size; 
 } String;
 
-String *init_string(char *string, u32 size);
+String  *init_string(char *string, u32 size);
 #define free_string(string) \
   free(string->chs); \
   free(string); \
   string = NULL;
 
-void resize_string(String *string, u32 size);
+void    resize_string(String *string, u32 size);
+#define concat_string(dest, src) \
+  resize_string(dest, dest->size + src->size - 1); \
+  strcat(dest->chs, src->chs);
 
 #endif
