@@ -15,7 +15,7 @@ Stack *init_stack(void *value);
 #define free_stack(stack) \
   free_list(stack->top) \
   free(stack); \
-  stack = null;
+  stack = NULL;
 
 void  push_stack(Stack *stack, void *value); // creates new node
 void  *pop_stack(Stack *stack);
