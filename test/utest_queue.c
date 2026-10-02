@@ -14,6 +14,9 @@ int main() {
   Queue *queue = init_queue(&test_value_1);
   assert(queue->size == 1);
   
+  free_queue(queue);
+  assert(queue == NULL);
+
   /////// End of Testing ///////
   
   printf("%ls\n", message);
