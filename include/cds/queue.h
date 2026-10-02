@@ -14,5 +14,9 @@ typedef struct {
 } Queue;
 
 Queue *init_queue(void *value);
+#define free_queue(queue) \
+  free_list(queue->back) \
+  free(queue); \
+  queue = NULL;
 
 #endif
