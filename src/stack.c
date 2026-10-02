@@ -19,13 +19,17 @@ void push_stack(Stack *stack, void *value) {
   LinkedList *curr = stack->top;
   node->next = curr;
   stack->top = node;
+  stack->size++;
 }
 
 void *pop_stack(Stack *stack) {
+  if (stack->size == 0) {
+    return NULL;
+  }
   void *value = stack->top->config.access(stack->top, 0); 
   void *next = stack->top->next;
   free(stack->top);
   stack->top = next;
-
+  stack->size--;
   return value;
 }
