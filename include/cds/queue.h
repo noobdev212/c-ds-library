@@ -22,8 +22,8 @@ Queue *init_queue(void *value);
 void push_back_queue(Queue *queue, void *value);
 void *pop_front_queue(Queue *queue);
 
-#define front_queue(queue, type) queue->front->value
-#define back_queue(queue, type) queue->back->value
+#define front_queue(queue, type) *(type*)queue->front->value
+#define back_queue(queue, type) *(type*)queue->back->value
 #define is_empty_queue(queue) queue->size == 0
 
 #endif
