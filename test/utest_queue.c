@@ -20,7 +20,10 @@ int main() {
   assert(queue->size == 2 
       AND *(int*)queue->back == 3 
       AND *(int*)queue->front->value == 1);
-  
+
+  ret = pop_front_queue(queue);
+  printf("3rd return case: %d\n", *(int*)ret);
+
   free_queue(queue);
   assert(queue == NULL);
 
