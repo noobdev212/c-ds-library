@@ -33,5 +33,7 @@ void *pop_front_queue(Queue *queue) {
   queue->front->next = NULL;
   void *value = node->value;
   free(node);
+  queue->size--;
   return value;
 }
+
