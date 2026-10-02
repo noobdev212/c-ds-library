@@ -67,6 +67,7 @@ target_sources(cds-static
     "${CMAKE_CURRENT_SOURCE_DIR}/src/operator.c"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/linkedlist.c"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/stack.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/queue.c"
 )
 target_include_directories(cds-static PUBLIC 
   ${PROJECT_SOURCE_DIR}/include
