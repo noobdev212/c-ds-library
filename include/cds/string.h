@@ -14,4 +14,6 @@ String *init_string(char *string, u32 size);
   free(string); \
   string = NULL;
 
+void resize_string(String *string, u32 size);
+
 #endif

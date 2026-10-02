@@ -11,3 +11,8 @@ String *init_string(char *string, u32 size) {
   strcpy(str->chs, string);
   return str;
 }
+
+void resize_string(String *string, u32 size) {
+  string->chs = realloc(string->chs, size * sizeof(char));
+  CDS_ERROR(string->chs == NULL, "failed to resize chs");
+}
