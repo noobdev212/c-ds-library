@@ -15,6 +15,11 @@ int main() {
   resize_string(str, str->size + 4);
   assert(str->size == str->size + 4);
 
+  String *str2 = init_string("test", 4);
+  concat_string(str, str2);
+  printf("2nd string case: %s\n", str->chs);
+  assert(str->chs == "testtest");
+
   free_string(str);
   assert(str == NULL);
 
