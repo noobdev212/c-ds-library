@@ -23,7 +23,18 @@ int main() {
 
   ret = pop_front_queue(queue);
   printf("3rd return case: %d\n", *(int*)ret);
+  assert(*(int*)ret == 1);
 
+  iret = front_queue(queue, int); 
+  printf("4th return case: %d\n", iret);
+  assert(iret == 3);
+
+  iret = back_queue(queue, int); 
+  printf("5th return case: %d\n", iret);
+  assert(iret == 3);
+
+  assert(is_empty_queue(queue) == false);
+  
   free_queue(queue);
   assert(queue == NULL);
 
