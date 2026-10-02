@@ -91,3 +91,15 @@ void *sequence_traverse(void *node, u32 index) {
   }
   return curr;
 }
+
+void *double_head_get(void *node) {
+  DSNode *curr = (DSNode*)node;
+  DSNode *prev = NULL;
+ 
+  while (curr != NULL) {
+    prev = curr;
+    curr = (DSNode*)curr->prev;
+  }
+
+  return prev;
+}

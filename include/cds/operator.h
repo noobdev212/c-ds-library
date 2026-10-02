@@ -14,4 +14,9 @@ void *sequence_tail_get(void *node);
 u32  sequence_count(void *node);
 void *sequence_traverse(void *node, u32 index);
 
+// doubly linked list, the only difference between
+// singly linked list operation is with the ability to
+// go back therefore index can be negative
+void *double_head_get(void *node);
+
 #endif
