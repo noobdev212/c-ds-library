@@ -9,5 +9,9 @@ typedef struct {
 } String;
 
 String *init_string(char *string, u32 size);
+#define free_string(string) \
+  free(string->chs); \
+  free(string); \
+  string = NULL;
 
 #endif
