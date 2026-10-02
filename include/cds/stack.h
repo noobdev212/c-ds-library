@@ -9,16 +9,16 @@
 typedef struct {
   LinkedList *top;
   u32 size;
-} stack;
+} Stack;
 
-stack *init_stack(void *value);
+Stack *init_stack(void *value);
 #define free_stack(stack) \
   free_list(stack->top) \
   free(stack); \
   stack = null;
 
-void  push_stack(stack *stack, void *value); // creates new node
-void  *pop_stack(stack *stack);
+void  push_stack(Stack *stack, void *value); // creates new node
+void  *pop_stack(Stack *stack);
 
 #define peek_stack(stack, type) *(type*)stack->top->value
 
