@@ -13,6 +13,13 @@ int main() {
 
   Queue *queue = init_queue(&test_value_1);
   assert(queue->size == 1);
+
+  push_back_queue(queue, &test_value_2);
+  printf("1st return case: %d\n", *(int*)queue->back->value);
+  printf("2nd return case: %d\n", *(int*)queue->front->value);
+  assert(queue->size == 2 
+      AND *(int*)queue->back == 3 
+      AND *(int*)queue->front->value == 1);
   
   free_queue(queue);
   assert(queue == NULL);
