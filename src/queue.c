@@ -15,3 +15,10 @@ Queue *init_queue(void *value) {
 
   return queue;
 }
+
+void push_back_queue(Queue *queue, void *value) {
+  LinkedList *node = init_slist(value);
+  node->next = queue->back;
+  queue->back = node;
+  queue->size++;
+}

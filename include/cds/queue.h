@@ -19,4 +19,6 @@ Queue *init_queue(void *value);
   free(queue); \
   queue = NULL;
 
+void push_back_queue(Queue *queue, void *value);
+
 #endif
