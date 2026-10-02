@@ -12,6 +12,9 @@ int main() {
   printf("1st string case: %s\n", str->chs);
   assert(str->chs == "test");
 
+  free_string(str);
+  assert(str == NULL);
+
   /////// End of Testing ///////
   
   printf("%ls\n", message);
