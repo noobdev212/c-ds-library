@@ -26,3 +26,12 @@ void push_back_queue(Queue *queue, void *value) {
   queue->back = node;
   queue->size++;
 }
+
+void *pop_front_queue(Queue *queue) {
+  LinkedList *node = queue->front;
+  queue->front = (LinkedList*)queue->front->prev;
+  queue->front->next = NULL;
+  void *value = node->value;
+  free(node);
+  return value;
+}
