@@ -19,6 +19,10 @@ int main() {
   concat_string(str, str2);
   printf("2nd string case: %s\n", str->chs);
   assert(str->chs == "testtest");
+  
+  iret = cmp_string(str, str2);
+  printf("3rd string case: %d\n", iret);
+  assert(iret > 0);
 
   free_string(str);
   assert(str == NULL);
