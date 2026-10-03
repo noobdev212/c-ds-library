@@ -19,4 +19,7 @@ void *sequence_traverse(void *node, u32 index);
 // go back therefore index can be negative
 void *double_head_get(void *node);
 
+i64  string_search_char(void* string, void* ch, u32 index, u32 count);
+u32  string_count_char(void *string, void *delimeter);
+
 #endif

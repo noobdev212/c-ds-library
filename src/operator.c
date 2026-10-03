@@ -1,4 +1,5 @@
 #include "cds/operator.h"
+#include "cds/string.h"
 
 void *random_access_get(void *collection, u32 index) {
   DSCollection *container = (DSCollection*)collection;
@@ -102,4 +103,40 @@ void *double_head_get(void *node) {
   }
 
   return prev;
+}
+
+i64 string_search_char(void* string, void* ch, u32 index, u32 count) {
+  String *str = (String*)string;
+  char c = *(char*)ch;
+
+  i64 ind = -1;
+  for (u32 i = index; i < str->size; i++) {
+    if (count <= 0) {
+      ind = i;
+      break;
+    }
+    else if (str->chs[i] == c){
+      count--;
+    }
+  }
+
+  return ind;
+}
+
+u32 string_count_char(void *string, void *delimeter) {
+  char *str = strdup(((String*)string)->chs);
+  char *delim = ((String*)delimeter)->chs;
+
+  u32 count = 0;
+  char *saveptr;
+  char *token = strtok_r(str, delim, &saveptr);
+
+  while (token != NULL) {
+    count++;
+    token = strtok_r(NULL, delim, &saveptr);
+  }
+
+  free(str);
+
+  return count;
 }

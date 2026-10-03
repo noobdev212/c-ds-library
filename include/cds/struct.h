@@ -38,8 +38,10 @@ typedef struct {
   void (*rshift)(void*, u32, u32);
   void (*lshift)(void*, u32, u32);
   void *(*back)(void*); // last element
-  u32 (*count)(void*); // count elements
+  u32  (*count)(void*); // count elements
+  u32  (*ccount)(void*, void*); // count characters
   void *(*traverse)(void*, u32);
+  i64  (*search)(void*, void*, u32, u32);
 } DSConfig;
 
 /**
