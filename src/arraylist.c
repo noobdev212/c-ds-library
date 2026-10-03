@@ -20,12 +20,6 @@ ArrayList *init_array(u32 capacity, u8 nbyte) {
   return array;
 }
 
-void free_array(ArrayList *array) {
-  free(array->elements);
-  free(array);
-  array = NULL;
-}
-
 void *get_array(ArrayList *array, u32 index) {
   return array->config.access(array, index);
 }
@@ -48,16 +42,16 @@ void pop_back_array(ArrayList *array) {
 
 void insert_array(ArrayList *array, void *value, u32 index) {
   if (array->size > index) {
-    array->rshift(array, index, array->size);
+    array->config.rshift(array, index, array->size);
+    array->size++;
   }
   set_array(array, value, index);
 }
 
 void delete_array(ArrayList *array, u32 index) {
   if (array->size > index) {
-    array->lshift(array, index, array->size);
+    array->config.lshift(array, index, array->size);
   }
-  void *repl = NULL;
-  set_array(array, &repl, array->size); 
+  set_array(array, NULL, array->size); 
   array->size--;
 }

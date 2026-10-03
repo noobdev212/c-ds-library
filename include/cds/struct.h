@@ -4,6 +4,7 @@
 #include <stddef.h>
 #include <stdint.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <errno.h>
 #include <string.h>
 
@@ -12,24 +13,28 @@ typedef uint16_t u16;
 typedef uint32_t u32;
 typedef uint64_t u64;
 
-typedef struct DSCollection;
 
 #define CDS_ERROR(condition, desc) \
   if (condition) { \
-    fprintf(stderr, "CDS Error: %s (Code %d): %s", desc, errno, strerror(errno)); \
+    fprintf(stderr, "CDS Error: %s (Code %d): %s\n", desc, errno, strerror(errno)); \
   }
 
 #define CDS_ERROR_R(condition, desc) \
   if (condition) { \
-    fprintf(stderr, "CDS Error: %s (Code %d): %s", desc, errno, strerror(errno)); \
+    fprintf(stderr, "CDS Error: %s (Code %d): %s\n", desc, errno, strerror(errno)); \
     return NULL; \
   }
   
 typedef struct {
-  void (*replace)(DSCollection*, void*, u32);
-  void *(*access)(DSCollection*, u32);
-  void (*rshift)(DSCollection*, u32, u32);
-  void (*lshift)(DSCollection*, u32, u32);
+  // the first paramter is a placeholder for
+  // DSCollection or any alternatives to that
+  void (*replace)(void*, void*, u32);
+  void *(*access)(void*, u32);
+  void (*rshift)(void*, u32, u32);
+  void (*lshift)(void*, u32, u32);
+  void *(*back)(void*); // last element
+  u32 (*count)(void*); // count elements
+  void *(*traverse)(void*, u32);
 } DSConfig;
 
 /**
@@ -44,8 +49,39 @@ typedef struct {
   void *elements;
   u32    size;
   u32    capacity;
-  u8     nbytes;
+  u8     nbyte;
   DSConfig config;
 } DSCollection;
+
+/**
+ * value    - void pointer
+ * next     - single or many Node options
+ * prev     - previous node
+ * count    - how many elements does next provide
+ * config   - to handle callbacks against different 
+ *            variety of function
+ * type     - single, or double linked list, graph
+*/
+
+typedef enum {
+  NODE_SINGLE,
+  NODE_DOUBLE,
+  NODE_GRAPH
+} NodeType;
+
+typedef struct {
+  void *value;
+  void *prev;
+  void *next; // cast down from DSNode
+  u32 count; // how many next option is provided
+  DSConfig config;
+  NodeType type;
+} DSNode;
+
+// free structure for collection
+#define free_cstruct(collection) \
+  free(collection->elements); \
+  free(collection); \
+  collection = NULL;
 
 #endif
