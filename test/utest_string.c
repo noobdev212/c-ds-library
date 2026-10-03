@@ -8,7 +8,7 @@ int main() {
 
   /////// Testing Content ///////
   
-  String *str = init_string("test", 4);
+  String *str = init_string("tes,t,", 6);
   printf("1st string case: %s\n", str->chs);
   assert(str->chs == "test");
 
@@ -23,6 +23,10 @@ int main() {
   iret = cmp_string(str, str2);
   printf("3rd string case: %d\n", iret);
   assert(iret > 0);
+
+  String *delim = init_string(",", 1);
+  char **split = split_string(str, delim);
+  printf("4th string case: %s\n", split[1]);
 
   free_string(str);
   assert(str == NULL);
