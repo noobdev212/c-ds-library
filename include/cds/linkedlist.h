@@ -41,4 +41,8 @@ void pop_back_list(LinkedList *list); // only sets value of last node to null
 
 LinkedList *insert_list(LinkedList *src, LinkedList *dest, u32 index);
 
+#define get_tail_list(list) list->config.back(list)
+#define get_head_list(list) \
+  list->type == NODE_DOUBLE ? list->config.front(list) : NULL
+
 #endif

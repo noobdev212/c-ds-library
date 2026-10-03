@@ -9,21 +9,22 @@ LinkedList *init_list(void *value, u32 count, NodeType type) {
   switch(type) {
     case NODE_SINGLE:
       config = (DSConfig){
-        .access = &sequence_access_get,
-        .replace = &sequence_access_set,
-        .back = &sequence_tail_get,
-        .count = &sequence_count,
+        .access   = &sequence_access_get,
+        .replace  = &sequence_access_set,
+        .back     = &sequence_tail_get,
+        .count    = &sequence_count,
         .traverse = &sequence_traverse
       };
       list->next = NULL;
       break;
     case NODE_DOUBLE:
       config = (DSConfig){
-        .access = &sequence_access_get,
-        .replace = &sequence_access_set,
-        .back = &sequence_tail_get,
-        .count = &sequence_count,
-        .traverse = &sequence_traverse
+        .access   = &sequence_access_get,
+        .replace  = &sequence_access_set,
+        .back     = &sequence_tail_get,
+        .count    = &sequence_count,
+        .traverse = &sequence_traverse,
+        .front    = &double_head_get
       };
       list->next = NULL;
       list->prev = NULL;

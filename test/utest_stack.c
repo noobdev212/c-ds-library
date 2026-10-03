@@ -12,7 +12,7 @@ int main() {
   assert(nstack->size == 0);
 
   Stack *stack = init_stack(&test_value_1);
-  assert(nstack->size == 1);
+  assert(stack->size == 1);
 
   int dummy = peek_stack(stack, int);
   assert(dummy == 1);
