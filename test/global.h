@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <assert.h>
 #include <locale.h>
+#include <stdbool.h>
 
 #define AND &&
 #define OR ||
@@ -21,6 +22,7 @@
   int test_value_1 = 1; \
   int test_value_2 = 3; \
   unsigned int count; \
+  int iret; \
   void *ret, *ret_1; // to be used for return values
 
 #endif
