@@ -6,6 +6,7 @@
 typedef struct {
   char *chs;
   u32  size; 
+  DSConfig config;
 } String;
 
 String  *init_string(char *string, u32 size);
@@ -20,5 +21,6 @@ void    resize_string(String *string, u32 size);
   strcat(dest->chs, src->chs);
 
 #define cmp_string(lstr, rstr) strcmp(lstr->chs, rstr->chs)
+char **split_string(String *str, String *delim);
 
 #endif
