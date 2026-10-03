@@ -52,8 +52,6 @@ int main() {
   printf("7th return case: %u\n", count);
   assert(*(int*)ret == 1 AND *(int*)ret_1 == 3 AND count == 3);
 
-  
-
   free_list(list);
   assert(list == NULL);
   /////// End of Testing ///////
